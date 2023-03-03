@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Inclui aqui a rota galery.urls no path raiz "/", usa-se a função include.
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("galery.urls")),

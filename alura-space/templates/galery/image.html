@@ -1,25 +1,14 @@
+<!-- configuração Django que define que este bloco de código utiliza outro, realizando a importação via extends, essa prática é algo comum em Django e é utilizada para não haver repetição de código, é chamada de DRY (Dont Repeat Yourself) -->
 {% extends 'galery/base.html' %}
+<!-- Configuração Django em Python que indica ao Django que esse arquivo carrega arquivos estáticos (CSS, JavaScript, etc.) e por isso quando o Django renderiza o arquivo deve-se passar os arquivos estáticos para esse arquivo HTML-->
+<!-- O comando Python para carregar o arquivo é colocado nas tags IMGS, { % static 'nome do assets CSS' % } -->
 {% load static %}
+<!-- Configuração Django em Python que indica ao Django que esse arquivo é um bloco de conteúdo e que pode ser usado em outro local, usado neste caso do base.html-->
 {% block content %}
     <div class="pagina-inicial">
-        <header class="cabecalho">
-            <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
-            <div class="cabecalho__busca">
-                <div class="busca__fundo">
-                    <input class="busca__input" type="text" placeholder="O que você procura?">
-                    <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" alt="ícone de search">
-                </div>
-            </div>
-        </header>
+        {% include 'galery/partials/_header.html' %}
         <main class="principal">
-            <section class="menu-lateral">
-                <nav class="menu-lateral__navegacao">
-                    <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
-                </nav>
-            </section>
+            {% include 'galery/partials/_section_navbar.html' %}
             <section class="conteudo">
                 <section class="imagem">
                     <div class="imagem__conteudo">
@@ -36,15 +25,4 @@
             </section>
         </main>
     </div>
-    <footer class="rodape">
-        <div class="rodape__icones">
-            <a href="https://twitter.com/AluraOnline" target=”_blank” >
-                <img src="{% static '/assets/ícones/1x/twitter.png" alt="ícone twitter">
-            </a>
-            <a href="https://www.instagram.com/aluraonline/' %}" target=”_blank” >
-                <img src="{% static '/assets/ícones/1x/instagram.png' %}" alt="ícone instagram">
-            </a>
-        </div>
-        <p class="rodape__texto">Desenvolvido por Alura</p>
-    </footer>
 {% endblock %}

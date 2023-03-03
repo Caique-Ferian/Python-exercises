@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path, os
 from dotenv import load_dotenv
 
+# Função que carrega o conteúdo dos arquivos ENV.
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# A SECRET_KEY é a chave necessária para acessar as aplicações DJANGO, ela é gerada na criação de um SETUP e não deve ser passado ao gitHUB, por isso usa-se dotenv que carregar um arquivo ENV contendo o valor da SECRET_KEY (IGUAL JWT_SECRET)
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -33,6 +35,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# Aqui é colocado todos os APPS da aplicação para ser utilizado pelo Django
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -121,8 +124,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+# Atributo de configuração Django, ele configura qual o diretório que o Django pegará os arquivos Estáticos da Aplicação
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "setup/static")]
 
+# Atributo de configuração Django, que indica onde será pasta que será criada pelo Django responsável por guardar todos os arquivos Estáticos para manipulação
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
