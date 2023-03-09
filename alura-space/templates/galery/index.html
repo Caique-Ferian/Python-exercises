@@ -27,10 +27,10 @@
                             {% if cards %}
                             {% for photography in cards %}
                             <li class="card">
-                                <a href="{% url 'image' %}">
+                                <a href="{% url 'image' photography.id%}">
                                     <img class="card__imagem" src="{% static '/assets/imagens/galeria/' %}{{photography.photo}}" alt="foto">
                                 </a>
-                                <span class="card__tag">Estrelas</span>
+                                <span class="card__tag">{{photography.category}}</span>
                                 <div class="card__info">
                                     <p class="card__titulo">{{photography.name}}</p>
                                     <div class="card__texto">

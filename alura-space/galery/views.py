@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from galery.models import Photography
 
 
@@ -8,5 +8,6 @@ def index(request):
     return render(request, "galery/index.html", {"cards": photographys})
 
 
-def image(request):
-    return render(request, "galery/image.html")
+def image(request, photo_id):
+    photography = get_object_or_404(Photography, pk=photo_id)
+    return render(request, "galery/image.html", {"photography": photography})
