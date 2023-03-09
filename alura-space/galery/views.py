@@ -4,7 +4,9 @@ from galery.models import Photography
 
 # Cria Os Controllers da aplicação aqui, que neste caso está sendo usado para renderizar arquivos HTML
 def index(request):
-    photographys = Photography.objects.filter(published=True)
+    photographys = Photography.objects.order_by("-published_date").filter(
+        published=True
+    )
     return render(request, "galery/index.html", {"cards": photographys})
 
 
